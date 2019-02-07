@@ -1,0 +1,44 @@
+typedef Window WindowProxy;
+
+typedef double DOMHighResTimeStamp;
+
+interface object { };
+
+// currently unknown types that need to be handled somehow
+interface ArrayBuffer { };
+interface ArrayBufferView { };
+interface Blob { };
+interface DOMMatrix2DInit { };
+interface File { };
+interface FileList { };
+interface FormData { };
+interface Function { };
+interface MediaSource { };
+interface MediaStream { };
+interface RequestCredentials { };
+interface ServiceWorker { };
+interface SVGScriptElement { };
+interface SVGImageElement { };
+interface Uint8ClampedArray { };
+interface WebGLRenderingContext { };
+interface WebGL2RenderingContext { };
+
+interface BufferSource { };
+interface Int32Array { };
+interface Float32Array { };
+
+interface DOMMatrix { };
+interface ByteString { };
+interface VoidFunction { };
+
+interface MouseEvent { };
+interface FrozenArray { };
+
+interface Union { };
+interface Promise { };
+
+[OnGlobalScope]
+interface GlobalScope {
+    static readonly attribute Document document;
+    static readonly attribute Window window;
+};

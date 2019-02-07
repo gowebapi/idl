@@ -1,0 +1,15 @@
+// https://drafts.csswg.org/cssom/#the-linkstyle-interface
+
+interface mixin LinkStyle {
+  // readonly attribute CSSStyleSheet? sheet;
+};
+
+/*
+[Exposed=Window]
+interface CSSStyleSheet : StyleSheet {
+  readonly attribute CSSRule? ownerRule;
+  [SameObject] readonly attribute CSSRuleList cssRules;
+  unsigned long insertRule(CSSOMString rule, optional unsigned long index = 0);
+  void deleteRule(unsigned long index);
+};
+*/
