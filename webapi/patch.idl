@@ -24,6 +24,7 @@ interface WebGLRenderingContext { };
 interface WebGL2RenderingContext { };
 
 interface BufferSource { };
+interface Uint32Array { };
 interface Int32Array { };
 interface Float32Array { };
 
@@ -34,11 +35,4 @@ interface VoidFunction { };
 interface MouseEvent { };
 interface FrozenArray { };
 
-interface Union { };
 interface Promise { };
-
-[OnGlobalScope]
-interface GlobalScope {
-    static readonly attribute Document document;
-    static readonly attribute Window window;
-};

@@ -1,0 +1,6 @@
+
+[OnGlobalScope]
+interface GlobalScope {
+    static readonly attribute Document document;
+    static readonly attribute Window window;
+};

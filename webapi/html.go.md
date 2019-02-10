@@ -1,3 +1,3 @@
-# Global space patches
+# HTML spec
 
 .package = github.com/gowebapi/webapi
