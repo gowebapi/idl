@@ -15,8 +15,6 @@ interface ServiceWorker { };
 interface SVGScriptElement { };
 interface SVGImageElement { };
 interface Uint8ClampedArray { };
-interface WebGLRenderingContext { };
-interface WebGL2RenderingContext { };
 
 interface ByteString { };
 // interface VoidFunction { };
