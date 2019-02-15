@@ -1,0 +1,9 @@
+
+
+[OnGlobalScope]
+interface GlobalScopeJavaScript {
+    static void eval(string code);
+    static bool isFinite(double number);
+    static bool isNan(double number);
+    static double parseFloat(string text);
+};

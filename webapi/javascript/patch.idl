@@ -1,18 +1,13 @@
 typedef Window WindowProxy;
 
-typedef double DOMHighResTimeStamp;
-
-interface object { };
 
 // currently unknown types that need to be handled somehow
-interface ArrayBuffer { };
-interface ArrayBufferView { };
-interface Blob { };
-interface DOMMatrix2DInit { };
-interface File { };
-interface FileList { };
+// interface ArrayBufferView { };
+// interface Blob { };
+// interface File { };
+// interface FileList { };
 interface FormData { };
-interface Function { };
+// interface Function { };
 interface MediaSource { };
 interface MediaStream { };
 interface RequestCredentials { };
@@ -23,16 +18,7 @@ interface Uint8ClampedArray { };
 interface WebGLRenderingContext { };
 interface WebGL2RenderingContext { };
 
-interface BufferSource { };
-interface Uint32Array { };
-interface Int32Array { };
-interface Float32Array { };
-
-interface DOMMatrix { };
 interface ByteString { };
-interface VoidFunction { };
+// interface VoidFunction { };
 
 interface MouseEvent { };
-interface FrozenArray { };
-
-interface Promise { };

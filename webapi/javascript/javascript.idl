@@ -1,0 +1,20 @@
+
+interface object { };
+
+
+interface ArrayBuffer { };
+// interface BufferSource { };
+interface Int8Array { };
+interface Int16Array { };
+interface Uint8Array { };
+interface Uint16Array { };
+interface Float64Array { };
+interface DataView { };
+
+interface Uint32Array { };
+interface Int32Array { };
+interface Float32Array { };
+
+interface FrozenArray { };
+
+interface Promise { };

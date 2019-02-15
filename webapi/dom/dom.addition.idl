@@ -4,3 +4,7 @@ interface GlobalScope {
     static readonly attribute Document document;
     static readonly attribute Window window;
 };
+
+// TODO define this
+interface DOMMatrix2DInit { };
+interface DOMMatrix { };
