@@ -10,7 +10,7 @@ interface FormData { };
 // interface Function { };
 interface MediaSource { };
 interface MediaStream { };
-interface RequestCredentials { };
+// interface RequestCredentials { };
 interface ServiceWorker { };
 interface SVGScriptElement { };
 interface SVGImageElement { };
