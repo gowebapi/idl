@@ -1,3 +1,7 @@
+// GENERATED CONTENT - DO NOT EDIT
+// Content was automatically extracted by Reffy into reffy-reports
+// (https://github.com/tidoust/reffy-reports)
+// Source: DOM Standard (https://dom.spec.whatwg.org/)
 
 [Constructor(DOMString type, optional EventInit eventInitDict),
  Exposed=(Window,Worker,AudioWorklet)]
@@ -37,17 +41,9 @@ dictionary EventInit {
   boolean composed = false;
 };
 
-
-// ----------
-
-
 partial interface Window {
   [Replaceable] readonly attribute any event; // historical
 };
-
-
-// ----------
-
 
 [Constructor(DOMString type, optional CustomEventInit eventInitDict),
  Exposed=(Window,Worker)]
@@ -60,10 +56,6 @@ interface CustomEvent : Event {
 dictionary CustomEventInit : EventInit {
   any detail = null;
 };
-
-
-// ----------
-
 
 [Constructor,
  Exposed=(Window,Worker,AudioWorklet)]
@@ -86,10 +78,6 @@ dictionary AddEventListenerOptions : EventListenerOptions {
   boolean once = false;
 };
 
-
-// ----------
-
-
 [Constructor,
  Exposed=(Window,Worker)]
 interface AbortController {
@@ -97,38 +85,22 @@ interface AbortController {
 
   void abort();
 };
-
-// ----------
-
-
 [Exposed=(Window,Worker)]
 interface AbortSignal : EventTarget {
   readonly attribute boolean aborted;
 
   attribute EventHandler onabort;
 };
-
-// ----------
-
-
 interface mixin NonElementParentNode {
   Element? getElementById(DOMString elementId);
 };
 Document includes NonElementParentNode;
 DocumentFragment includes NonElementParentNode;
 
-
-// ----------
-
-
 interface mixin DocumentOrShadowRoot {
 };
 Document includes DocumentOrShadowRoot;
 ShadowRoot includes DocumentOrShadowRoot;
-
-
-// ----------
-
 
 interface mixin ParentNode {
   [SameObject] readonly attribute HTMLCollection children;
@@ -146,20 +118,12 @@ Document includes ParentNode;
 DocumentFragment includes ParentNode;
 Element includes ParentNode;
 
-
-// ----------
-
-
 interface mixin NonDocumentTypeChildNode {
   readonly attribute Element? previousElementSibling;
   readonly attribute Element? nextElementSibling;
 };
 Element includes NonDocumentTypeChildNode;
 CharacterData includes NonDocumentTypeChildNode;
-
-
-// ----------
-
 
 interface mixin ChildNode {
   [CEReactions, Unscopable] void before((Node or DOMString)... nodes);
@@ -171,19 +135,11 @@ DocumentType includes ChildNode;
 Element includes ChildNode;
 CharacterData includes ChildNode;
 
-
-// ----------
-
-
 interface mixin Slotable {
   readonly attribute HTMLSlotElement? assignedSlot;
 };
 Element includes Slotable;
 Text includes Slotable;
-
-
-// ----------
-
 
 [Exposed=Window]
 interface NodeList {
@@ -192,20 +148,12 @@ interface NodeList {
   iterable<Node>;
 };
 
-
-// ----------
-
-
 [Exposed=Window, LegacyUnenumerableNamedProperties]
 interface HTMLCollection {
   readonly attribute unsigned long length;
   getter Element? item(unsigned long index);
   getter Element? namedItem(DOMString name);
 };
-
-
-// ----------
-
 
 [Constructor(MutationCallback callback),
  Exposed=Window]
@@ -227,10 +175,6 @@ dictionary MutationObserverInit {
   sequence<DOMString> attributeFilter;
 };
 
-
-// ----------
-
-
 [Exposed=Window]
 interface MutationRecord {
   readonly attribute DOMString type;
@@ -243,10 +187,6 @@ interface MutationRecord {
   readonly attribute DOMString? attributeNamespace;
   readonly attribute DOMString? oldValue;
 };
-
-
-// ----------
-
 
 [Exposed=Window]
 interface Node : EventTarget {
@@ -310,10 +250,6 @@ dictionary GetRootNodeOptions {
   boolean composed = false;
 };
 
-
-// ----------
-
-
 [Constructor,
  Exposed=Window]
 interface Document : Node {
@@ -363,10 +299,6 @@ dictionary ElementCreationOptions {
   DOMString is;
 };
 
-
-// ----------
-
-
 [Exposed=Window]
 interface DOMImplementation {
   [NewObject] DocumentType createDocumentType(DOMString qualifiedName, DOMString publicId, DOMString systemId);
@@ -376,10 +308,6 @@ interface DOMImplementation {
   boolean hasFeature(); // useless; always returns true
 };
 
-
-// ----------
-
-
 [Exposed=Window]
 interface DocumentType : Node {
   readonly attribute DOMString name;
@@ -387,18 +315,10 @@ interface DocumentType : Node {
   readonly attribute DOMString systemId;
 };
 
-
-// ----------
-
-
 [Constructor,
  Exposed=Window]
 interface DocumentFragment : Node {
 };
-
-
-// ----------
-
 
 [Exposed=Window]
 interface ShadowRoot : DocumentFragment {
@@ -407,10 +327,6 @@ interface ShadowRoot : DocumentFragment {
 };
 
 enum ShadowRootMode { "open", "closed" };
-
-
-// ----------
-
 
 [Exposed=Window]
 interface Element : Node {
@@ -462,10 +378,6 @@ dictionary ShadowRootInit {
   required ShadowRootMode mode;
 };
 
-
-// ----------
-
-
 [Exposed=Window,
  LegacyUnenumerableNamedProperties]
 interface NamedNodeMap {
@@ -479,10 +391,6 @@ interface NamedNodeMap {
   [CEReactions] Attr removeNamedItemNS(DOMString? namespace, DOMString localName);
 };
 
-
-// ----------
-
-
 [Exposed=Window]
 interface Attr : Node {
   readonly attribute DOMString? namespaceURI;
@@ -495,10 +403,6 @@ interface Attr : Node {
 
   readonly attribute boolean specified; // useless; always returns true
 };
-
-// ----------
-
-
 [Exposed=Window]
 interface CharacterData : Node {
   attribute [TreatNullAs=EmptyString] DOMString data;
@@ -510,43 +414,23 @@ interface CharacterData : Node {
   void replaceData(unsigned long offset, unsigned long count, DOMString data);
 };
 
-
-// ----------
-
-
 [Constructor(optional DOMString data = ""),
  Exposed=Window]
 interface Text : CharacterData {
   [NewObject] Text splitText(unsigned long offset);
   readonly attribute DOMString wholeText;
 };
-
-// ----------
-
-
 [Exposed=Window]
 interface CDATASection : Text {
 };
-
-// ----------
-
-
 [Exposed=Window]
 interface ProcessingInstruction : CharacterData {
   readonly attribute DOMString target;
 };
-
-// ----------
-
-
 [Constructor(optional DOMString data = ""),
  Exposed=Window]
 interface Comment : CharacterData {
 };
-
-
-// ----------
-
 
 [Exposed=Window]
 interface AbstractRange {
@@ -557,17 +441,9 @@ interface AbstractRange {
   readonly attribute boolean collapsed;
 };
 
-
-// ----------
-
-
 [Exposed=Window]
 interface StaticRange : AbstractRange {
 };
-
-
-// ----------
-
 
 [Constructor,
  Exposed=Window]
@@ -607,10 +483,6 @@ interface Range : AbstractRange {
   stringifier;
 };
 
-
-// ----------
-
-
 [Exposed=Window]
 interface NodeIterator {
   [SameObject] readonly attribute Node root;
@@ -624,10 +496,6 @@ interface NodeIterator {
 
   void detach();
 };
-
-
-// ----------
-
 
 [Exposed=Window]
 interface TreeWalker {
@@ -644,10 +512,6 @@ interface TreeWalker {
   Node? previousNode();
   Node? nextNode();
 };
-
-// ----------
-
-
 [Exposed=Window]
 callback interface NodeFilter {
   // Constants for acceptNode()
@@ -673,10 +537,6 @@ callback interface NodeFilter {
   unsigned short acceptNode(Node node);
 };
 
-
-// ----------
-
-
 [Exposed=Window]
 interface DOMTokenList {
   readonly attribute unsigned long length;
@@ -690,7 +550,3 @@ interface DOMTokenList {
   [CEReactions] stringifier attribute DOMString value;
   iterable<DOMString>;
 };
-
-
-// ----------
-

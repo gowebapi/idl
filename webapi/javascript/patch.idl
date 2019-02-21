@@ -20,4 +20,7 @@ interface ByteString { };
 // interface VoidFunction { };
 
 interface MouseEvent { };
+
+interface ReadableStream { };
+
 dictionary MouseEventInit { };

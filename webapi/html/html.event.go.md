@@ -22,9 +22,27 @@
 
 .package = github.com/gowebapi/webapi/html/htmlevent
 
+## FrameRequestCallback
+
+.package = github.com/gowebapi/webapi/html/htmlevent
+
 ## HashChangeEvent
 
 .package = github.com/gowebapi/webapi/html/htmlevent
+
+## HashChangeEventInit
+
+.package = github.com/gowebapi/webapi/html/htmlevent
+
+## OnErrorEventHandlerNonNull
+
+.package = github.com/gowebapi/webapi/html/htmlevent
+.name = OnErrorEventHandler
+
+## OnBeforeUnloadEventHandlerNonNull
+
+.package = github.com/gowebapi/webapi/html/htmlevent
+.name = OnBeforeUnloadEventHandler
 
 ## PageTransitionEvent
 

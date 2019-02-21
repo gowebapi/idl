@@ -11,16 +11,6 @@
 
 .package = github.com/gowebapi/webapi/html
 
-## OnErrorEventHandlerNonNull
-
-.package = github.com/gowebapi/webapi/html
-.name = OnErrorEventHandler
-
-## OnBeforeUnloadEventHandlerNonNull
-
-.package = github.com/gowebapi/webapi/html
-.name = OnBeforeUnloadEventHandler
-
 ## FocusOptions
 
 .package = github.com/gowebapi/webapi/html
