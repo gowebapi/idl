@@ -75,3 +75,9 @@
 ## TrackEventInit
 
 .package = github.com/gowebapi/webapi/html/htmlevent
+
+## WorkerType
+
+    this belongs to html.worker api but is placed here to break dependency between packages.
+
+.package = github.com/gowebapi/webapi/html/htmlevent

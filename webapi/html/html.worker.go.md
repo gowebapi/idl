@@ -38,7 +38,3 @@
 ## WorkerOptions
 
 .package = github.com/gowebapi/webapi/html/worker
-
-## WorkerType
-
-.package = github.com/gowebapi/webapi/html/worker

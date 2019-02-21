@@ -2,22 +2,14 @@ typedef Window WindowProxy;
 
 
 // currently unknown types that need to be handled somehow
-// interface ArrayBufferView { };
-// interface Blob { };
-// interface File { };
-// interface FileList { };
 interface FormData { };
-// interface Function { };
 interface MediaSource { };
 interface MediaStream { };
-// interface RequestCredentials { };
-interface ServiceWorker { };
 interface SVGScriptElement { };
 interface SVGImageElement { };
 interface Uint8ClampedArray { };
 
 interface ByteString { };
-// interface VoidFunction { };
 
 interface MouseEvent { };
 
