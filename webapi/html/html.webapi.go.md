@@ -24,7 +24,6 @@
 
 .package = github.com/gowebapi/webapi
 
-##  WindowPostMessageOptions
+## WindowPostMessageOptions
 
 .package = github.com/gowebapi/webapi
-
