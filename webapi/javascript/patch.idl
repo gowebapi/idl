@@ -11,8 +11,4 @@ interface Uint8ClampedArray { };
 
 interface ByteString { };
 
-interface MouseEvent { };
-
 interface ReadableStream { };
-
-dictionary MouseEventInit { };
