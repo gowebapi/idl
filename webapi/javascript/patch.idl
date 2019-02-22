@@ -2,7 +2,6 @@ typedef Window WindowProxy;
 
 
 // currently unknown types that need to be handled somehow
-interface FormData { };
 interface MediaSource { };
 interface MediaStream { };
 interface SVGScriptElement { };
