@@ -26,14 +26,6 @@
 
 .package = github.com/gowebapi/webapi/dom/domcore
 
-## DOMMatrix
-
-.package = github.com/gowebapi/webapi/dom/domcore
-
-## DOMMatrix2DInit
-
-.package = github.com/gowebapi/webapi/dom/domcore
-
 ## DOMTokenList
 
 .package = github.com/gowebapi/webapi/dom/domcore

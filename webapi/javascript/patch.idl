@@ -3,8 +3,11 @@ typedef Window WindowProxy;
 
 // currently unknown types that need to be handled somehow
 interface MediaStream { };
+interface OverconstrainedError { };
 interface SVGScriptElement { };
 interface SVGImageElement { };
+interface SVGElement { };
+interface CSSPseudoElement { };
 interface Uint8ClampedArray { };
 
 interface ByteString { };
