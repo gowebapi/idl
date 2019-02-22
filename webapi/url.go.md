@@ -1,5 +1,5 @@
-# URL API
+# URL Standard
 
-    https://url.spec.whatwg.org/#api
-
+.title = URL Standard
+.url = <https://url.spec.whatwg.org/>
 .package = github.com/gowebapi/webapi/url

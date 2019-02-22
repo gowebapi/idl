@@ -1,5 +1,7 @@
-# Notification API
+# Notification API Standard
 
+.title = Notifications API Standard
+.url = <https://notifications.spec.whatwg.org/>
 .package = github.com/gowebapi/webapi/notification
 
 ## Notification

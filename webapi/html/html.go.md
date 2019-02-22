@@ -1,5 +1,7 @@
-# HTML spec
+# HTML Standard
 
+.title = HTML Standard
+.url = <https://html.spec.whatwg.org/>
 .package = github.com/gowebapi/webapi/html/htmlmisc
 @on "HTML." : .package = github.com/gowebapi/webapi/html
 
