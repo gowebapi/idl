@@ -1,6 +1,6 @@
 // https://drafts.csswg.org/cssom/#the-linkstyle-interface
 
-interface mixin LinkStyle {
+interface mixin LinkStyle2 {
   // readonly attribute CSSStyleSheet? sheet;
 };
 

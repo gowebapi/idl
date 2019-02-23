@@ -2,4 +2,4 @@
 
 .title = CSS Fonts Module Level 4
 .url = <https://drafts.csswg.org/css-fonts-4/>
-.package = github.com/gowebapi/webapi/unknown/css-fonts
+.package = github.com/gowebapi/webapi/css/fonts
