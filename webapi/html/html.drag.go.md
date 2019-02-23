@@ -4,24 +4,20 @@
 
 ## DragEvent
 
-.package = github.com/gowebapi/webapi/html/draganddrop
+.package = github.com/gowebapi/webapi/html/htmlevent
 
 ## DataTransfer
 
-.package = github.com/gowebapi/webapi/html/draganddrop
+.package = github.com/gowebapi/webapi/html/datatransfer
 
 ## DataTransferItem
 
-.package = github.com/gowebapi/webapi/html/draganddrop
+.package = github.com/gowebapi/webapi/html/datatransfer
 
 ## DataTransferItemList
 
-.package = github.com/gowebapi/webapi/html/draganddrop
+.package = github.com/gowebapi/webapi/html/datatransfer
 
 ## DragEventInit
 
-.package = github.com/gowebapi/webapi/html/draganddrop
-
-## FunctionStringCallback
-
-.package = github.com/gowebapi/webapi/html/draganddrop
+.package = github.com/gowebapi/webapi/html/htmlevent

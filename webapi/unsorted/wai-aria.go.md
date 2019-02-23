@@ -2,4 +2,4 @@
 
 .title = Accessible Rich Internet Applications
 .url = <WAI-ARIA>
-.package = github.com/gowebapi/webapi/unknown/wai-aria
+.package = github.com/gowebapi/webapi/aria

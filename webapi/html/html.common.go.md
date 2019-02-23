@@ -8,6 +8,10 @@
 
 .package = github.com/gowebapi/webapi/html/htmlcommon
 
+## FunctionStringCallback
+
+.package = github.com/gowebapi/webapi/html/draganddrop
+
 ## OnErrorEventHandlerNonNull
 
 .package = github.com/gowebapi/webapi/html/htmlcommon
