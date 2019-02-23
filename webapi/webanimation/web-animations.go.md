@@ -2,4 +2,4 @@
 
 .title = Web Animations
 .url = <https://drafts.csswg.org/web-animations-1/>
-.package = github.com/gowebapi/webapi/unknown/web-animations
+.package = github.com/gowebapi/webapi/webanimations
