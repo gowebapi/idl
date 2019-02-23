@@ -2,7 +2,7 @@ typedef Window WindowProxy;
 
 
 // currently unknown types that need to be handled somehow
-interface MediaStream { };
+// interface MediaStream { };
 interface OverconstrainedError { };
 typedef DOMString CSSOMString;
 interface Uint8ClampedArray { };
