@@ -7,7 +7,7 @@
 
 ## BlobCallback
 
-.package = github.com/gowebapi/webapi/fileapi
+.package = github.com/gowebapi/webapi/file
 
 ## TimeRanges
 
