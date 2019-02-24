@@ -4,6 +4,14 @@
 .url = <https://w3c.github.io/ServiceWorker/v1/>
 .package = github.com/gowebapi/webapi/serviceworker
 
+## ExtendableEvent
+
+.package = github.com/gowebapi/webapi/dom/domcore
+
+## ExtendableEventInit
+
+.package = github.com/gowebapi/webapi/dom/domcore
+
 ## ServiceWorkerGlobalScope
 
 .package = github.com/gowebapi/webapi/html/worker
