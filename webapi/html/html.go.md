@@ -5,9 +5,19 @@
 .package = github.com/gowebapi/webapi/html/htmlmisc
 @on "HTML." : .package = github.com/gowebapi/webapi/html
 
+## ApplicationCache
+
+@patch idlconst
+.constSuffix = ""
+
 ## BlobCallback
 
 .package = github.com/gowebapi/webapi/file
+
+## EventSource
+
+@patch idlconst
+.constSuffix = ""
 
 ## TimeRanges
 

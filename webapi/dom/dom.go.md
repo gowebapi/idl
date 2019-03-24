@@ -7,10 +7,22 @@
 ## Node
 
 @changetype ownerDocument rawjs
+@patch idlconst
+.constSuffix = ""
+
+## NodeFilter
+
+@patch idlconst
+.constSuffix = ""
 
 ## Element
 
 @changetype assignedSlot rawjs
+
+## Range
+
+@patch idlconst
+.constSuffix = ""
 
     Types that can be moved elsewhere:
     ## TreeWalker

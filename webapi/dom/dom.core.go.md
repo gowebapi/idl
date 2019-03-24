@@ -24,6 +24,8 @@
 
 ## DOMException
 
+@patch idlconst
+.constSuffix = ""
 .package = github.com/gowebapi/webapi/dom/domcore
 
 ## DOMTokenList
@@ -32,6 +34,8 @@
 
 ## Event
 
+@patch idlconst
+.constSuffix = ""
 .package = github.com/gowebapi/webapi/dom/domcore
 
 ## EventInit

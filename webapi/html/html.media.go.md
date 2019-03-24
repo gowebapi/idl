@@ -20,10 +20,14 @@
 
 ## HTMLMediaElement
 
+@patch idlconst
+.constSuffix = ""
 .package = github.com/gowebapi/webapi/html/media
 
 ## HTMLTrackElement
 
+@patch idlconst
+.constSuffix = ""
 .package = github.com/gowebapi/webapi/html/media
 
 ## HTMLVideoElement
@@ -32,6 +36,8 @@
 
 ## MediaError
 
+@patch idlconst
+.constSuffix = ""
 .package = github.com/gowebapi/webapi/html/media
 
 ## TextTrack

@@ -4,6 +4,16 @@
 .url = <https://w3c.github.io/uievents/>
 .package = github.com/gowebapi/webapi/html/htmlevent
 
+## KeyboardEvent
+
+@patch idlconst
+.constSuffix = ""
+
+## WheelEvent
+
+@patch idlconst
+.constSuffix = ""
+
     ## CompositionEventInit
 
     @changetype view rawjs
