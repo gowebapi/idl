@@ -16,5 +16,3 @@ interface Int32Array { };
 interface Float32Array { };
 
 interface FrozenArray { };
-
-interface Promise { };

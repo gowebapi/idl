@@ -1,0 +1,31 @@
+// this files contains Promise<?> values that gets generated
+
+// generic interface
+interface Promise {
+    Promise then(PromiseOnFulfilled onFulfilled, optional PromiseOnRejected onRejected);
+    Promise catch(PromiseOnRejected onRejected);
+    Promise finally(PromiseFinally onFinally);
+};
+
+callback PromiseFinally = void ();
+callback PromiseOnFulfilled = void (any value);
+callback PromiseOnRejected = void (any reason);
+
+// promise without returning value
+interface PromiseVoid {
+    PromiseVoid then(PromiseVoidOnFulfilled onFulfilled, optional PromiseVoidOnRejected onRejected);
+    PromiseVoid catch(PromiseVoidOnRejected onRejected);
+    PromiseVoid finally(PromiseFinally onFinally);
+};
+callback PromiseVoidOnFulfilled = void ();
+callback PromiseVoidOnRejected = void (any reason);
+
+interface PromiseTemplate {
+    PromiseTemplate then(PromiseTemplateOnFulfilled onFulfilled, optional PromiseTemplateOnRejected onRejected);
+    PromiseTemplate catch(PromiseTemplateOnRejected onRejected);
+    PromiseTemplate finally(PromiseFinally onFinally);
+};
+
+callback PromiseTemplateOnFulfilled = void (PromiseTemplateValue value);
+callback PromiseTemplateOnRejected = void (any reason);
+interface PromiseTemplateValue { };
