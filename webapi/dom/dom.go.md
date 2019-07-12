@@ -4,6 +4,8 @@
 .title = DOM Standard
 .url = <https://dom.spec.whatwg.org/>
 
+@on "DOMTokenList*": .package = github.com/gowebapi/webapi/dom/domcore
+
 ## Node
 
 @changetype ownerDocument rawjs

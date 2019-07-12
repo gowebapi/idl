@@ -4,9 +4,7 @@
 .url = <https://xhr.spec.whatwg.org/>
 .package = github.com/gowebapi/webapi/communication/xhr
 
-## FormData
-
-.package = github.com/gowebapi/webapi/communication/form
+@on "FormData*": .package = github.com/gowebapi/webapi/communication/form
 
 ## XMLHttpRequest
 

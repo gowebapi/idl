@@ -28,10 +28,6 @@
 .constSuffix = ""
 .package = github.com/gowebapi/webapi/dom/domcore
 
-## DOMTokenList
-
-.package = github.com/gowebapi/webapi/dom/domcore
-
 ## Event
 
 @patch idlconst
