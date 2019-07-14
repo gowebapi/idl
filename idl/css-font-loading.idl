@@ -56,7 +56,7 @@ callback ForEachCallback = void (FontFace font, long index, FontFaceSet self);
  Constructor(sequence<FontFace> initialFaces)]
 interface FontFaceSet : EventTarget {
   // FontFaceSet is Set-like!
-  // setlike<FontFace>;
+  setlike<FontFace>;
   FontFaceSet add(FontFace font);
   boolean delete(FontFace font);
   void clear();

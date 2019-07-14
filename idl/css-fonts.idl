@@ -20,7 +20,7 @@ interface CSSFontFeatureValuesRule : CSSRule {  attribute CSSOMString fontFamily
 };
 
 interface CSSFontFeatureValuesMap {
-  // maplike<CSSOMString, sequence<unsigned long>>;
+  maplike<CSSOMString, sequence<unsigned long>>;
   void set(CSSOMString featureValueName,
            (unsigned long or sequence<unsigned long>) values);
 };
@@ -29,7 +29,7 @@ partial interface CSSRule {
 };
 
 interface CSSFontPaletteValuesRule : CSSRule {
-  // maplike<unsigned long, CSSOMString>;
+  maplike<unsigned long, CSSOMString>;
   attribute CSSOMString fontFamily;
   attribute CSSOMString basePalette;
 };

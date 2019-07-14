@@ -561,7 +561,7 @@ interface AudioWorkletGlobalScope : WorkletGlobalScope {
 
 [Exposed=Window]
 interface AudioParamMap {
-  // readonly maplike<DOMString, AudioParam>;
+  readonly maplike<DOMString, AudioParam>;
 };
 
 [Exposed=Window,
