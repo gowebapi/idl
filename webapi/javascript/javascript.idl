@@ -16,3 +16,95 @@ interface Int32Array { };
 interface Float32Array { };
 
 interface FrozenArray { };
+
+// value property
+[OnGlobalScope]
+interface JavacriptGlobalScope {
+    static readonly attribute any globalThis;
+    static any eval(DOMString code);
+    static boolean isFinite(double value);
+    static boolean isNaN(double value);
+    static double parseFloat(any value);
+    static long parseInt(any value, long radix);
+    static DOMString decodeURI(DOMString encodedURI);
+    static DOMString decodeURIComponent(DOMString encodedURI);
+    static DOMString encodeURI(DOMString uri);
+    static DOMString encodeURIComponent(DOMString uri);
+};
+
+[Constructor(DOMString ... argumentAndFunctionBody),TypeName=Function]
+interface JavaScriptFunction {
+    readonly attribute long length;
+    readonly attribute DOMString name;
+    // TODO add more here
+};
+
+[Constructor(any ...elements)]
+interface Array {
+    getter any (long index);
+    setter void (long index, any value);
+    readonly attribute long length;
+    static Array from(any arrayLike, optional ArrayMapFn mapFn, optional any thisArg );
+    static boolean isArray(any value);
+    Array concat(any arrayOrValues);
+    Array copyWithin(long target, optional long start, optional long end);
+    ArrayEntryIterator entries();
+    boolean every(ArrayTestCallback callback, optional any thisArg);
+    Array fill(any value, optional long start, optional long end);
+    Array filter(ArrayTestCallback callback, optional any thisArg);
+    any find(ArrayTestCallback callback, optional any thisArg);
+    long findIndex(ArrayTestCallback callback, optional any thisArg);
+    Array flat(optional long depth);
+    Array flatMap(ArrayValueCallback callback, optional any thisArg);
+    void forEach(ArrayForEachCallback callback, optional any thisArg);
+    boolean includes(any valueToFind, long fromIndex);
+    long indexOf(any value, long fromIndex);
+    DOMString join(optional DOMString separator);
+    ArrayKeyIterator keys();
+    long lastIndexOf(any searchElement, optional long fromIndex);
+    Array map(ArrayMapCallback callback, optional any thisArg);
+    any pop();
+    long push(any element1, any ...elementN);
+    any reduce(ArrayReduceCallback callback, any initailValue);
+    any reduceRight(ArrayReduceCallback callback, any initailValue);
+    Array reverse();
+    any shift();
+    Array slice(optional long begin, optional long end);
+    boolean some(ArrayTestCallback callback, optional any thisArg);
+    Array sort(optional ArrayCompareFunction compare);
+    Array splice(long start, long deleteCount, any ... itemsToAddAfterStart);
+    DOMString toLocaleString(optional DOMString locales);
+    DOMString toString();
+    Array unshift(any element1, any ... elementN);
+    ArrayValueIterator values();
+};
+
+interface ArrayEntryIterator {
+    ArrayEntryValue next();
+};
+dictionary ArrayEntryValue {
+    sequence<any> value;
+    boolean done;
+};
+interface ArrayKeyIterator {
+    ArrayKeyValue next();
+};
+dictionary ArrayKeyValue {
+    long value;
+    boolean done;
+};
+interface ArrayValueIterator {
+    ArrayValueIteratorValue next();
+};
+dictionary ArrayValueIteratorValue {
+    any value;
+    boolean done;
+};
+
+callback ArrayMapFn = any (any value);
+callback ArrayTestCallback = boolean (any element, long index, Array array);
+callback ArrayValueCallback = any (any value, long index, Array array);
+callback ArrayForEachCallback = void (any value, long index, Array array);
+callback ArrayMapCallback = any(any value, long index, Array array);
+callback ArrayReduceCallback = any (any accumulator, any currentValue, long currentIndex, Array array);
+callback ArrayCompareFunction = long ( any a, any b);
