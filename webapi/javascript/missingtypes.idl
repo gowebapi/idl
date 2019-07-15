@@ -1,0 +1,11 @@
+// This contains missing types
+
+interface Date { };
+
+interface Coordinates { };
+
+interface Dictionary { };
+
+interface RTCError { };
+
+interface WritableStream { };
