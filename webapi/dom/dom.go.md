@@ -26,6 +26,10 @@
 @patch idlconst
 .constSuffix = ""
 
+## Text
+
+@changetype assignedSlot rawjs
+
     Types that can be moved elsewhere:
     ## TreeWalker
     ## Range

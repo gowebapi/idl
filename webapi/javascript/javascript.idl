@@ -41,8 +41,8 @@ interface JavaScriptFunction {
 
 [Constructor(any ...elements)]
 interface Array {
-    getter any (long index);
-    setter void (long index, any value);
+    getter any (unsigned long index);
+    setter void (unsigned long index, any value);
     readonly attribute long length;
     static Array from(any arrayLike, optional ArrayMapFn mapFn, optional any thisArg );
     static boolean isArray(any value);
