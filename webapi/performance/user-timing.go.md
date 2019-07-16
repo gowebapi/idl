@@ -2,4 +2,6 @@
 
 .title = User Timing Level 3
 .url = <https://w3c.github.io/user-timing/>
-.package = github.com/gowebapi/webapi/timing/user
+.package = github.com/gowebapi/webapi/performance
+
+@on ".": @replace .name "Performance" ""

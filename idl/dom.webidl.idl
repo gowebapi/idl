@@ -40,4 +40,4 @@ interface DOMException { // but see below note about ECMAScript binding
 
 typedef unsigned long long DOMTimeStamp;
 
-typedef double DOMHighResTimeStamp;
+// typedef double DOMHighResTimeStamp;
