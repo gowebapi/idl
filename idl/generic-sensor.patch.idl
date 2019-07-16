@@ -1,0 +1,8 @@
+
+
+enum GenericSensorLocalCoordinateSystem { "device", "screen" };
+
+typedef GenericSensorLocalCoordinateSystem GyroscopeLocalCoordinateSystem;
+typedef GenericSensorLocalCoordinateSystem MagnetometerLocalCoordinateSystem;
+typedef GenericSensorLocalCoordinateSystem OrientationSensorLocalCoordinateSystem;
+typedef GenericSensorLocalCoordinateSystem AccelerometerLocalCoordinateSystem;

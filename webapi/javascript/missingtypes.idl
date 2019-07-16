@@ -2,8 +2,6 @@
 
 interface Date { };
 
-interface Coordinates { };
-
 interface Dictionary { };
 
 interface RTCError { };

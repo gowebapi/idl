@@ -2,4 +2,4 @@
 
 .title = Accelerometer
 .url = <https://w3c.github.io/accelerometer/>
-.package = github.com/gowebapi/webapi/sensor/accelerometer
+.package = github.com/gowebapi/webapi/device/sensor
