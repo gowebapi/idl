@@ -9,4 +9,5 @@
 ## XMLHttpRequest
 
 @patch idlconst
+@changetype responseXML rawjs
 .constSuffix = ""
