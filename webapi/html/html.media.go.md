@@ -9,6 +9,9 @@
 ## AudioTrackList
 
 .package = github.com/gowebapi/webapi/html/media
+@event AddTrack TrackEvent cancelable: false, bubbles: false
+@event Change Event cancelable: false, bubbles: true
+@event RemoveTrack TrackEvent cancelable: false, bubbles: false
 
 ## CanPlayTypeResult
 
@@ -24,6 +27,10 @@
 .constSuffix = ""
 .package = github.com/gowebapi/webapi/html/media
 
+    encrypted-media.idl
+@event Encrypted MediaEncryptedEvent cancelable: false, bubbles: false
+@event WaitingForKey Event cancelable: false, bubbles: false
+
 ## HTMLTrackElement
 
 @patch idlconst
@@ -34,6 +41,9 @@
 
 .package = github.com/gowebapi/webapi/html/media
 
+@event EnterPictureInPicture EnterPictureInPictureEvent cancelable: false, bubbles: false
+@event LeavePictureInPicture Event cancelable: false, bubbles: true
+
 ## MediaError
 
 @patch idlconst
@@ -43,6 +53,7 @@
 ## TextTrack
 
 .package = github.com/gowebapi/webapi/html/media
+@event CueChange Event cancelable: false, bubbles: false
 
 ## TextTrackKind
 
@@ -51,10 +62,15 @@
 ## TextTrackList
 
 .package = github.com/gowebapi/webapi/html/media
+@event AddTrack TrackEvent cancelable: false, bubbles: false
+@event Change Event cancelable: false, bubbles: true
+@event RemoveTrack TrackEvent cancelable: false, bubbles: false
 
 ## TextTrackCue
 
 .package = github.com/gowebapi/webapi/html/media
+@event Enter Event cancelable: false, bubbles: false
+@event Exit Event cancelable: false, bubbles: false
 
 ## TextTrackCueList
 
@@ -71,3 +87,6 @@
 ## VideoTrackList
 
 .package = github.com/gowebapi/webapi/html/media
+@event AddTrack TrackEvent cancelable: false, bubbles: false
+@event Change Event cancelable: false, bubbles: true
+@event RemoveTrack TrackEvent cancelable: false, bubbles: false

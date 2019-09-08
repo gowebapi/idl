@@ -6,6 +6,18 @@
 
 @on ".": @replace .name "MIDI" ""
 
+## MIDIAccess
+
+@event StateChange MIDIConnectionEvent cancelable: false, bubbles: false
+
+## MIDIInput
+
+@event MIDIMessage MIDIMessageEvent cancelable: false, bubbles: false
+
+## MIDIPort
+
+@event StateChange MIDIConnectionEvent cancelable: false, bubbles: false
+
 ## MIDIPortConnectionState
 
 .suffix = ""

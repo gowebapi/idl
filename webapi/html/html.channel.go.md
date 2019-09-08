@@ -7,6 +7,8 @@
 ## MessagePort
 
 .package = github.com/gowebapi/webapi/html/channel
+@event Message MessageEvent cancelable: false, bubbles: false
+@event MessageError MessageEvent cancelable: false, bubbles: false
 
     ## PortCollection
 
@@ -15,3 +17,5 @@
 ## BroadcastChannel
 
 .package = github.com/gowebapi/webapi/html/channel
+@event Message MessageEvent cancelable: false, bubbles: false
+@event MessageError MessageEvent cancelable: false, bubbles: false

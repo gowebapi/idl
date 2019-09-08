@@ -3,3 +3,7 @@
 .title = The Screen Orientation API
 .url = <https://w3c.github.io/screen-orientation/>
 .package = github.com/gowebapi/webapi/media/orientation
+
+## ScreenOrientation
+
+@event Change Event cancelable: false, bubbles: false

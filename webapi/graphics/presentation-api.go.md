@@ -10,12 +10,31 @@
 
 .name = "Presentation"
 
+## PresentationAvailability
+
+@event Change Event cancelable: false, bubbles:false
+
+## PresentationConnection
+
+@event Close PresentationConnectionCloseEvent cancelable: false, bubbles:false
+@event Connect Event cancelable: false, bubbles:false
+@event Message MessageEvent cancelable: false, bubbles:false
+@event Terminate Event cancelable: false, bubbles:false
+
 ## PresentationConnectionCloseReason
 
 .prefix = "Reason"
 .suffix = ""
 
+## PresentationConnectionList
+
+@event ConnectionAvailable PresentationConnectionAvailableEvent cancelable: false, bubbles:false
+
 ## PresentationConnectionState
 
 .prefix = "State"
 .suffix = ""
+
+## PresentationRequest
+
+@event ConnectionAvailable PresentationConnectionAvailableEvent cancelable: false, bubbles:false

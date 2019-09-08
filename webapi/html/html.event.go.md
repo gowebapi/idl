@@ -12,11 +12,13 @@
 
 ## FormDataEvent
 
-.package = github.com/gowebapi/webapi/html/htmlevent
+.package = github.com/gowebapi/webapi/html
+    .package = github.com/gowebapi/webapi/html/htmlevent
 
 ## FormDataEventInit
 
-.package = github.com/gowebapi/webapi/html/htmlevent
+.package = github.com/gowebapi/webapi/html
+    .package = github.com/gowebapi/webapi/html/htmlevent
 
 ## HashChangeEvent
 
@@ -47,6 +49,18 @@
 .package = github.com/gowebapi/webapi/html/htmlevent
 
 ## PromiseRejectionEventInit
+
+.package = github.com/gowebapi/webapi/html/htmlevent
+
+## Storage
+
+.package = github.com/gowebapi/webapi/html/htmlevent
+
+## StorageEvent
+
+.package = github.com/gowebapi/webapi/html/htmlevent
+
+## StorageEventInit
 
 .package = github.com/gowebapi/webapi/html/htmlevent
 

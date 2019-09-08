@@ -21,3 +21,4 @@
 ## DragEventInit
 
 .package = github.com/gowebapi/webapi/html/htmlevent
+@changetype view rawjs

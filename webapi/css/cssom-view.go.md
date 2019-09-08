@@ -7,3 +7,11 @@
 ## CaretPosition
 
 @changetype offsetNode rawjs
+
+## MediaQueryList
+
+@event Change MediaQueryListEvent cancelable: false, bubbles: false
+
+## Screen
+
+@event Change Event cancelable: false, bubbles: false

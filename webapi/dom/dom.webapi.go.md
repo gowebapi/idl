@@ -9,6 +9,19 @@
 
 .package = github.com/gowebapi/webapi
 
+@event ReadyStateChange Event cancelable: false, bubbles: false
+
+    fullscreen.idl
+@event FullscreenChange Event cancelable: false, bubbles: true
+@event FullscreenError Event cancelable: false, bubbles: true
+
+    pointerlock.idl
+@event PointerLockChange Event cancelable: false, bubbles: true
+@event PointerLockError Event cancelable: false, bubbles: true
+
+    page-visibility.idl
+@event VisibilityChange Event cancelable: false, bubbles: true
+
 ## DOMImplementation
 
 .package = github.com/gowebapi/webapi

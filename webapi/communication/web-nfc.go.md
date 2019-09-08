@@ -11,6 +11,11 @@
 .prefix = "Compatibility"
 .suffix = ""
 
+## NFCReader
+
+@event Error NFCErrorEvent cancelable: false, bubbles: false
+@event Reading NFCReadingEvent cancelable: false, bubbles: false
+
 ## NDEFRecordType
 
 .prefix = "Record"

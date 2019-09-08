@@ -9,3 +9,9 @@
 .name = LocalCoordinateSystem
 .prefix = "CoordinateSystem"
 .suffix = ""
+
+## Sensor
+
+@event Activate Event cancelable: false, bubbles: false
+@event Error SensorErrorEvent cancelable: false, bubbles: false
+@event Reading Event cancelable: false, bubbles: false

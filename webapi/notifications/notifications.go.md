@@ -7,11 +7,10 @@
 ## Notification
 
 .constructorName = New
-
-onclick = OnClick
-onshow = OnShow
-onerror = OnError
-onclose = OnClose
+@event Click Event cancelable: false, bubbles: false
+@event Close Event cancelable: false, bubbles: false
+@event Error Event cancelable: false, bubbles: false
+@event Show Event cancelable: false, bubbles: false
 
 ## NotificationOptions
 

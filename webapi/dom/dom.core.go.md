@@ -9,6 +9,7 @@
 ## AbortSignal
 
 .package = github.com/gowebapi/webapi/dom/domcore
+@event Abort Event cancelable: false, bubbles: false
 
 ## AddEventListenerOptions
 

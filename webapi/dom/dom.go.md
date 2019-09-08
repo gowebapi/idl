@@ -21,6 +21,10 @@
 
 @changetype assignedSlot rawjs
 
+    fullscreen.idl
+@event FullscreenChange Event cancelable: false, bubbles: true
+@event FullscreenError Event cancelable: false, bubbles: true
+
 ## Range
 
 @patch idlconst

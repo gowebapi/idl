@@ -9,3 +9,4 @@
 ## Performance
 
 .name = Performance
+@event ResourceTimingBufferFull Event cancelable: false, bubbles: false
