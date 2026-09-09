@@ -1,0 +1,23 @@
+// GENERATED CONTENT - DO NOT EDIT
+// Content was automatically extracted by Reffy into webref
+// (https://github.com/w3c/webref)
+// Source: Compression Standard (https://compression.spec.whatwg.org/)
+
+enum CompressionFormat {
+  "brotli",
+  "deflate",
+  "deflate-raw",
+  "gzip",
+};
+
+[Constructor(CompressionFormat format),
+ Exposed=(Window,Worker)]
+interface CompressionStream {
+};
+// CompressionStream includes GenericTransformStream;
+
+[Constructor(CompressionFormat format),
+ Exposed=(Window,Worker)]
+interface DecompressionStream {
+};
+// DecompressionStream includes GenericTransformStream;

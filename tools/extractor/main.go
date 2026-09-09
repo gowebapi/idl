@@ -201,11 +201,15 @@ func normalizeWebIDL(content string) string {
 	s = reNonIdentAttrSolo.ReplaceAllString(s, "")
 	s = reEmptyAnnotation.ReplaceAllString(s, "")
 
-	// 5. Strip extended attributes placed inside union types (which must contain " or ")
+	// 5. Strip extended attributes placed inside union types or sequence/typedef types
 	reUnionAnnot1 := regexp.MustCompile(`\(([^)]*?)\s*\[[^\]]*\]\s*([^)]*?\bor\b[^)]*?)\)`)
 	s = reUnionAnnot1.ReplaceAllString(s, "($1 $2)")
 	reUnionAnnot2 := regexp.MustCompile(`\(([^)]*?\bor\b[^)]*?)\s*\[[^\]]*\]\s*([^)]*?)\)`)
 	s = reUnionAnnot2.ReplaceAllString(s, "($1 $2)")
+	reSeqAnnot := regexp.MustCompile(`\bsequence<\s*\[[^\]]*\]\s*`)
+	s = reSeqAnnot.ReplaceAllString(s, "sequence<")
+	reTypedefAnnot := regexp.MustCompile(`typedef\s+\[[^\]]*\]\s*`)
+	s = reTypedefAnnot.ReplaceAllString(s, "typedef ")
 
 	// 6. Comment out namespace definitions and their annotations (unsupported by webidlparser)
 	reNamespace := regexp.MustCompile(`(?s)(?:(\[[^\]]*\])\s*)?(?:partial\s+)?namespace\s+\w+\s*\{[^}]*\};`)
@@ -258,6 +262,8 @@ func normalizeWebIDL(content string) string {
 	reUndefinedUnion := regexp.MustCompile(`\bundefined\s+or\b`)
 	s = reUndefinedUnion.ReplaceAllString(s, "any or")
 	s = strings.ReplaceAll(s, "Promise<undefined>", "Promise<void>")
+	rePromiseUnion := regexp.MustCompile(`Promise<\([^)]+\)>`)
+	s = rePromiseUnion.ReplaceAllString(s, "Promise<any>")
 	s = strings.ReplaceAll(s, "ObservableArray<", "sequence<")
 
 	// 9. inherit attribute -> attribute, [Exposed=...] stringifier; -> stringifier;
@@ -276,12 +282,37 @@ func normalizeWebIDL(content string) string {
 	})
 
 	// 10. record<K, V> unsupported in webidl-bind: strip from unions, replace standalone with object
-	reOrRecord := regexp.MustCompile(`\s+or\s+record<[^>]+>`)
+	reOrRecord := regexp.MustCompile(`\s+or\s+record<[^>]+(?:<[^>]+>[^>]*)?>`)
 	s = reOrRecord.ReplaceAllString(s, "")
-	reRecordOr := regexp.MustCompile(`\brecord<[^>]+>\s+or\s+`)
+	reRecordOr := regexp.MustCompile(`\brecord<[^>]+(?:<[^>]+>[^>]*)?>\s+or\s+`)
 	s = reRecordOr.ReplaceAllString(s, "")
-	reRecord := regexp.MustCompile(`\brecord<[^>]+>`)
-	s = reRecord.ReplaceAllString(s, "object")
+	for {
+		idx := strings.Index(s, "record<")
+		if idx == -1 {
+			break
+		}
+		depth := 0
+		end := -1
+		for i := idx + 7; i < len(s); i++ {
+			if s[i] == '<' {
+				depth++
+			} else if s[i] == '>' {
+				if depth == 0 {
+					end = i
+					break
+				}
+				depth--
+			}
+		}
+		if end == -1 {
+			break
+		}
+		s = s[:idx] + "object" + s[end+1:]
+	}
+
+	s = strings.ReplaceAll(s, "async_iterable<", "iterable<")
+	s = strings.ReplaceAll(s, "async iterable<", "iterable<")
+	s = strings.ReplaceAll(s, "async_sequence<", "sequence<")
 
 	// 11. undefined return types -> void (including setters, deleters, and static functions)
 	reUndefinedReturn := regexp.MustCompile(`(?m)^(\s*(?:\[[^\]]*\]\s*)*(?:static\s+)?(?:(?:getter|setter|deleter)\s+)?)undefined\b`)
@@ -292,7 +323,6 @@ func normalizeWebIDL(content string) string {
 	// 12. Modern types and unknown types:
 	// bigint -> long long, Float16Array -> Float32Array, AllowSharedBufferSource -> BufferSource
 	// TrustedHTML/Script/ScriptURL -> DOMString
-	// VideoFrame, GPUCanvasContext -> object
 	reBigInt := regexp.MustCompile(`\bbigint\b`)
 	s = reBigInt.ReplaceAllString(s, "long long")
 	reFloat16 := regexp.MustCompile(`\bFloat16Array\b`)
@@ -301,8 +331,6 @@ func normalizeWebIDL(content string) string {
 	s = reAllowShared.ReplaceAllString(s, "BufferSource")
 	reTrusted := regexp.MustCompile(`\b(?:TrustedHTML|TrustedScript|TrustedScriptURL|TrustedType)\b`)
 	s = reTrusted.ReplaceAllString(s, "DOMString")
-	reModernObjects := regexp.MustCompile(`\b(?:VideoFrame|GPUCanvasContext|ViewTransition|URLPatternCompatible)\b`)
-	s = reModernObjects.ReplaceAllString(s, "object")
 
 	// 13. Fix PaymentAddress -> ContactAddress in basic card
 	s = strings.ReplaceAll(s, "PaymentAddress", "ContactAddress")
@@ -348,6 +376,14 @@ func normalizeWebIDL(content string) string {
 	if strings.Contains(s, "interface SubtleCrypto") && !strings.Contains(s, "enum KeyUsage") {
 		s = "enum KeyUsage { \"encrypt\", \"decrypt\", \"sign\", \"verify\", \"deriveKey\", \"deriveBits\", \"wrapKey\", \"unwrapKey\" };\n\n" +
 			"enum KeyFormat { \"raw\", \"spki\", \"pkcs8\", \"jwk\" };\n\n" + s
+	}
+
+	// 20. WebGPU and WebCodecs enums (PredefinedColorSpace, BitrateMode)
+	if strings.Contains(s, "interface GPUCanvasContext") && !strings.Contains(s, "enum PredefinedColorSpace") {
+		s = "enum PredefinedColorSpace { \"srgb\", \"display-p3\" };\n\n" + s
+	}
+	if strings.Contains(s, "interface VideoEncoder") && !strings.Contains(s, "enum BitrateMode") {
+		s = "enum BitrateMode { \"constant\", \"variable\" };\n\n" + s
 	}
 
 	return s

@@ -68,7 +68,7 @@ interface SubtleCrypto {
     BufferSource data
   );
 
-  Promise<(CryptoKey or CryptoKeyPair)> generateKey(
+  Promise<any> generateKey(
     AlgorithmIdentifier algorithm,
     boolean extractable,
     sequence<KeyUsage> keyUsages
@@ -93,7 +93,7 @@ interface SubtleCrypto {
     boolean extractable,
     sequence<KeyUsage> keyUsages
   );
-  Promise<(ArrayBuffer or JsonWebKey)> exportKey(
+  Promise<any> exportKey(
     KeyFormat format,
     CryptoKey key
   );
