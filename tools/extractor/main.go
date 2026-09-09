@@ -314,6 +314,42 @@ func normalizeWebIDL(content string) string {
 	// 15. Transform in-body constructor(...) into [Constructor(...)] interface attributes
 	s = transformConstructors(s)
 
+	// 16. Permissions Policy ReportBody: ReportBody is an interface in reporting.idl, so violation body must be an interface
+	if strings.Contains(s, "PermissionsPolicyViolationReportBody : ReportBody") {
+		s = strings.ReplaceAll(s, "dictionary PermissionsPolicyViolationReportBody : ReportBody {", "interface PermissionsPolicyViolationReportBody : ReportBody {")
+		reReportBody := regexp.MustCompile(`(?s)interface PermissionsPolicyViolationReportBody : ReportBody\s*\{([^}]+)\}`)
+		s = reReportBody.ReplaceAllStringFunc(s, func(m string) string {
+			lines := strings.Split(m, "\n")
+			for i, l := range lines {
+				trimmed := strings.TrimSpace(l)
+				if trimmed == "" || strings.HasPrefix(trimmed, "//") || strings.HasPrefix(trimmed, "interface") || strings.HasPrefix(trimmed, "}") {
+					continue
+				}
+				if !strings.HasPrefix(trimmed, "readonly attribute") {
+					lines[i] = strings.Replace(l, trimmed, "readonly attribute "+trimmed, 1)
+				}
+			}
+			return strings.Join(lines, "\n")
+		})
+	}
+
+	// 17. Comment out duplicate AddressInit in payment handler (already defined in payment-request.idl)
+	if strings.Contains(s, "PaymentRequestEvent") && strings.Contains(s, "dictionary AddressInit") {
+		reDupAddressInit := regexp.MustCompile(`(?s)dictionary AddressInit\s*\{[^}]*\};`)
+		s = reDupAddressInit.ReplaceAllString(s, "// AddressInit already defined in payment-request.idl")
+	}
+
+	// 18. Geolocation backward-compatibility aliases and EpochTimeStamp
+	if strings.Contains(s, "interface GeolocationCoordinates") && !strings.Contains(s, "typedef GeolocationCoordinates Coordinates;") {
+		s += "\n\ntypedef GeolocationCoordinates Coordinates;\ntypedef GeolocationPosition Position;\ntypedef GeolocationPositionError PositionError;\ntypedef unsigned long long EpochTimeStamp;\n"
+	}
+
+	// 19. WebCrypto enums (moved to webcrypto-modern-algos upstream)
+	if strings.Contains(s, "interface SubtleCrypto") && !strings.Contains(s, "enum KeyUsage") {
+		s = "enum KeyUsage { \"encrypt\", \"decrypt\", \"sign\", \"verify\", \"deriveKey\", \"deriveBits\", \"wrapKey\", \"unwrapKey\" };\n\n" +
+			"enum KeyFormat { \"raw\", \"spki\", \"pkcs8\", \"jwk\" };\n\n" + s
+	}
+
 	return s
 }
 
