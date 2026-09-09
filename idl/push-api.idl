@@ -42,7 +42,7 @@ interface PushSubscription {
 dictionary PushSubscriptionJSON {
   USVString endpoint;
   DOMTimeStamp? expirationTime;
-  // record<DOMString, USVString> keys;
+  // object keys;
 };
 
 enum PushEncryptionKeyName {

@@ -78,7 +78,7 @@ dictionary RTCInboundRtpStreamStats : RTCReceivedRtpStreamStats {
              unsigned long long bytesReceived;
              unsigned long packetsFailedDecryption;
              unsigned long packetsDuplicated;
-             // record<USVString, unsigned long> perDscpPacketsReceived;
+             // object perDscpPacketsReceived;
             };
 
 dictionary RTCRemoteInboundRtpStreamStats : RTCReceivedRtpStreamStats {
@@ -105,8 +105,8 @@ dictionary RTCOutboundRtpStreamStats : RTCSentRtpStreamStats {
              double totalEncodeTime;
              double averageRtcpInterval;
              RTCQualityLimitationReason qualityLimitationReason;
-             // record<DOMString, double> qualityLimitationDurations;
-             // record<USVString, unsigned long> perDscpPacketsSent;
+             // object qualityLimitationDurations;
+             // object perDscpPacketsSent;
 };
 
 enum RTCQualityLimitationReason {

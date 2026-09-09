@@ -104,7 +104,7 @@ dictionary AuthenticationExtensionsClientInputs {
 dictionary AuthenticationExtensionsClientOutputs {
 };
 
-// typedef record<DOMString, DOMString> AuthenticationExtensionsAuthenticatorInputs;
+// typedef object AuthenticationExtensionsAuthenticatorInputs;
 
 dictionary CollectedClientData {
     required DOMString           type;

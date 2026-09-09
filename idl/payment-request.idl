@@ -14,7 +14,7 @@ interface PaymentRequest : EventTarget {
   Promise<boolean> canMakePayment();
 
   readonly attribute DOMString id;
-  readonly attribute PaymentAddress? shippingAddress;
+  readonly attribute ContactAddress? shippingAddress;
   readonly attribute DOMString? shippingOption;
   readonly attribute PaymentShippingType? shippingType;
 
@@ -82,7 +82,7 @@ dictionary PaymentItem {
 };
 
 [SecureContext, Exposed=(Window)]
-interface PaymentAddress {
+interface ContactAddress {
   [Default] object toJSON();
   readonly attribute DOMString city;
   readonly attribute DOMString country;
@@ -142,7 +142,7 @@ interface PaymentResponse : EventTarget {
   readonly attribute DOMString requestId;
   readonly attribute DOMString methodName;
   readonly attribute object details;
-  readonly attribute PaymentAddress? shippingAddress;
+  readonly attribute ContactAddress? shippingAddress;
   readonly attribute DOMString? shippingOption;
   readonly attribute DOMString? payerName;
   readonly attribute DOMString? payerEmail;

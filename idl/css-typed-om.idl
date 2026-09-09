@@ -14,7 +14,7 @@ interface CSSStyleValue {
 interface StylePropertyMapReadOnly {
     iterable<USVString, sequence<CSSStyleValue>>;
     any get(USVString property);
-    /* 'any' means (undefined or CSSStyleValue) here,
+    /* 'any' means (any or CSSStyleValue) here,
        see https://github.com/heycam/webidl/issues/60 */
     sequence<CSSStyleValue> getAll(USVString property);
     boolean has(USVString property);

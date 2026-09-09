@@ -52,11 +52,11 @@ interface mixin GenericTransformStream {
 interface TextDecoderStream {
 };
 TextDecoderStream includes TextDecoderCommon;
-TextDecoderStream includes GenericTransformStream;
+// TextDecoderStream includes GenericTransformStream;
 
 [Constructor,
  Exposed=(Window,Worker)]
 interface TextEncoderStream {
 };
 TextEncoderStream includes TextEncoderCommon;
-TextEncoderStream includes GenericTransformStream;
+// TextEncoderStream includes GenericTransformStream;

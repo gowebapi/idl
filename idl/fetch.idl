@@ -3,7 +3,7 @@
 // (https://github.com/tidoust/reffy-reports)
 // Source: Fetch Standard (https://fetch.spec.whatwg.org/)
 
-// typedef (sequence<sequence<ByteString>> or record<ByteString, ByteString>) HeadersInit;
+// typedef (sequence<sequence<ByteString>>) HeadersInit;
 typedef sequence<sequence<ByteString>> HeadersInit;
 
 [Constructor(optional HeadersInit init),
