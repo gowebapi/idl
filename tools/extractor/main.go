@@ -193,10 +193,12 @@ func normalizeWebIDL(content string) string {
 	s = reEmptyAnnotation.ReplaceAllString(s, "$1")
 
 	// 4. Strip attributes with numbers in value lists, e.g. [..., CustomAttr=(0, 8)]
-	reNonIdentAttr := regexp.MustCompile(`,\s*\w+=\([^)]*\)`)
+	reNonIdentAttr := regexp.MustCompile(`,\s*\w+=\([^)]*[0-9][^)]*\)`)
 	s = reNonIdentAttr.ReplaceAllString(s, "")
-	reNonIdentAttr2 := regexp.MustCompile(`\[\s*\w+=\([^)]*\)\s*,\s*`)
+	reNonIdentAttr2 := regexp.MustCompile(`\[\s*\w+=\([^)]*[0-9][^)]*\)\s*,\s*`)
 	s = reNonIdentAttr2.ReplaceAllString(s, "[")
+	reNonIdentAttrSolo := regexp.MustCompile(`\[\s*\w+=\([^)]*[0-9][^)]*\)\s*\]`)
+	s = reNonIdentAttrSolo.ReplaceAllString(s, "")
 	s = reEmptyAnnotation.ReplaceAllString(s, "")
 
 	// 5. Strip extended attributes placed inside union types (which must contain " or ")
@@ -208,9 +210,40 @@ func normalizeWebIDL(content string) string {
 	// 6. Comment out namespace definitions and their annotations (unsupported by webidlparser)
 	reNamespace := regexp.MustCompile(`(?s)(?:(\[[^\]]*\])\s*)?(?:partial\s+)?namespace\s+\w+\s*\{[^}]*\};`)
 	s = reNamespace.ReplaceAllStringFunc(s, func(m string) string {
+		idx := strings.Index(s, m)
+		if idx >= 0 {
+			lineStart := strings.LastIndex(s[:idx], "\n")
+			if lineStart == -1 {
+				lineStart = 0
+			} else {
+				lineStart++
+			}
+			precedingOnLine := strings.TrimSpace(s[lineStart:idx])
+			if strings.HasPrefix(precedingOnLine, "//") {
+				return m
+			}
+			lastOpen := strings.LastIndex(s[:idx], "/*")
+			lastClose := strings.LastIndex(s[:idx], "*/")
+			if lastOpen > lastClose {
+				return m
+			}
+		}
 		lines := strings.Split(m, "\n")
+		allCommented := true
+		for _, l := range lines {
+			t := strings.TrimSpace(l)
+			if t != "" && !strings.HasPrefix(t, "//") {
+				allCommented = false
+				break
+			}
+		}
+		if allCommented {
+			return m
+		}
 		for i, l := range lines {
-			lines[i] = "// " + l
+			if !strings.HasPrefix(strings.TrimSpace(l), "//") {
+				lines[i] = "// " + l
+			}
 		}
 		return strings.Join(lines, "\n")
 	})
@@ -233,8 +266,14 @@ func normalizeWebIDL(content string) string {
 	s = reStringifier.ReplaceAllString(s, "stringifier;")
 
 	// Comment out includes for unsupported/external mixins and interfaces not defined in the workspace
-	reUnsupportedIncludes := regexp.MustCompile(`(?m)^\s*(MathMLElement\s+includes\s+[^;]+;|[^;]+includes\s+GenericTransformStream\s*;).*$`)
-	s = reUnsupportedIncludes.ReplaceAllLiteralString(s, "// $0")
+	reUnsupportedIncludes := regexp.MustCompile(`(?m)^[ \t]*(?:MathMLElement\s+includes\s+[^;]+;|[^;]+includes\s+GenericTransformStream\s*;).*$`)
+	s = reUnsupportedIncludes.ReplaceAllStringFunc(s, func(m string) string {
+		trimmed := strings.TrimSpace(m)
+		if strings.HasPrefix(trimmed, "//") {
+			return m
+		}
+		return "// " + trimmed
+	})
 
 	// 10. record<K, V> unsupported in webidl-bind: strip from unions, replace standalone with object
 	reOrRecord := regexp.MustCompile(`\s+or\s+record<[^>]+>`)
@@ -244,13 +283,13 @@ func normalizeWebIDL(content string) string {
 	reRecord := regexp.MustCompile(`\brecord<[^>]+>`)
 	s = reRecord.ReplaceAllString(s, "object")
 
-	// 9. undefined return types -> void (including setters, deleters, and static functions)
+	// 11. undefined return types -> void (including setters, deleters, and static functions)
 	reUndefinedReturn := regexp.MustCompile(`(?m)^(\s*(?:\[[^\]]*\]\s*)*(?:static\s+)?(?:(?:getter|setter|deleter)\s+)?)undefined\b`)
 	s = reUndefinedReturn.ReplaceAllString(s, `${1}void`)
 	reCallbackUndefined := regexp.MustCompile(`(?m)(callback\s+\w+\s*=\s*)undefined\b`)
 	s = reCallbackUndefined.ReplaceAllString(s, `${1}void`)
 
-	// 10. Modern types and unknown types:
+	// 12. Modern types and unknown types:
 	// bigint -> long long, Float16Array -> Float32Array, AllowSharedBufferSource -> BufferSource
 	// TrustedHTML/Script/ScriptURL -> DOMString
 	// VideoFrame, GPUCanvasContext -> object
@@ -265,21 +304,14 @@ func normalizeWebIDL(content string) string {
 	reModernObjects := regexp.MustCompile(`\b(?:VideoFrame|GPUCanvasContext|ViewTransition|URLPatternCompatible)\b`)
 	s = reModernObjects.ReplaceAllString(s, "object")
 
-	// 11. Fix FeaturePolicyViolationReportBody: ReportBody is a dictionary, so this interface must be a dictionary with dictionary member syntax
-	s = strings.ReplaceAll(s, "interface FeaturePolicyViolationReportBody : ReportBody {", "dictionary FeaturePolicyViolationReportBody : ReportBody {")
-	reDictReadonlyAttr := regexp.MustCompile(`(?s)dictionary FeaturePolicyViolationReportBody : ReportBody \{([^}]+)\}`)
-	s = reDictReadonlyAttr.ReplaceAllStringFunc(s, func(m string) string {
-		return strings.ReplaceAll(m, "readonly attribute ", "")
-	})
-
-	// 12. Fix PaymentAddress -> ContactAddress in basic card
+	// 13. Fix PaymentAddress -> ContactAddress in basic card
 	s = strings.ReplaceAll(s, "PaymentAddress", "ContactAddress")
 
-	// 12. Strip dictionary parameter default values unsupported by parser (= {})
+	// 14. Strip dictionary parameter default values unsupported by parser (= {})
 	reEmptyDict := regexp.MustCompile(`=\s*\{\}`)
 	s = reEmptyDict.ReplaceAllString(s, "")
 
-	// 11. Transform in-body constructor(...) into [Constructor(...)] interface attributes
+	// 15. Transform in-body constructor(...) into [Constructor(...)] interface attributes
 	s = transformConstructors(s)
 
 	return s

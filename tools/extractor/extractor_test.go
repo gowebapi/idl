@@ -23,6 +23,9 @@ interface Example {
 	if strings.Contains(normalized, "Exposed=*") {
 		t.Errorf("Expected Exposed=* to be normalized, got: %s", normalized)
 	}
+	if !strings.Contains(normalized, "Exposed=(Window,Worker)") {
+		t.Errorf("Expected Exposed=(Window,Worker) to be preserved, got: %s", normalized)
+	}
 	if !strings.Contains(normalized, "Constructor(DOMString name, optional EventInit dict)") {
 		t.Errorf("Expected constructor to be converted to [Constructor(...)], got: %s", normalized)
 	}
@@ -46,6 +49,19 @@ interface Example {
 	}
 	if !strings.Contains(normalized, "// attribute CSSOMString margin-top;") {
 		t.Errorf("Expected hyphenated attribute to be commented out, got: %s", normalized)
+	}
+
+	// Test unsupported includes and namespace commenting
+	includesInput := "TextDecoderStream includes GenericTransformStream;\n/*\nnamespace CSS {\n};\n*/\n// namespace Foo {\n// };"
+	includesNorm := normalizeWebIDL(includesInput)
+	if !strings.Contains(includesNorm, "// TextDecoderStream includes GenericTransformStream;") {
+		t.Errorf("Expected properly commented include, got: %s", includesNorm)
+	}
+	if strings.Contains(includesNorm, "$0") {
+		t.Errorf("Expected no literal $0 in normalized output, got: %s", includesNorm)
+	}
+	if strings.Contains(includesNorm, "// //") {
+		t.Errorf("Expected no double comment prefix, got: %s", includesNorm)
 	}
 }
 
