@@ -1,10 +1,15 @@
 # WebIDL
 
-This repostiory contains WebIDL files used to generate the bindings for the Web browser javascript API.
+This repository contains WebIDL specifications and language transformation metadata used to generate Go WebAssembly bindings (`gowebapi/webapi`).
 
-Files are taken from: <https://github.com/tidoust/reffy-reports>
+## Specification Sources
 
-A cross reference browser: <https://dontcallmedom.github.io/webidlpedia/>
+Files in `idl/` are sourced from:
+- Curated W3C and WHATWG specifications: <https://github.com/w3c/webref> (formerly `tidoust/reffy-reports`).
+- Extracted directly from WHATWG standard sources using `tools/extractor`.
 
-Web platform tests:
-https://github.com/web-platform-tests/wpt
+A cross-reference browser: <https://dontcallmedom.github.io/webidlpedia/>
+
+## Updating Specifications
+
+To update specifications using the extractor tool, see [tools/extractor/README.md](tools/extractor/README.md).
