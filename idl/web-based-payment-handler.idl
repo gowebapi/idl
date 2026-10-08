@@ -1,0 +1,85 @@
+// GENERATED CONTENT - DO NOT EDIT
+// Content was automatically extracted by Reffy into webref
+// (https://github.com/w3c/webref)
+// Source: Web-based Payment Handler API (https://w3c.github.io/web-based-payment-handler/)
+
+partial interface ServiceWorkerRegistration {
+  [SameObject] readonly attribute PaymentManager paymentManager;
+};
+
+[SecureContext, Exposed=(Window)]
+interface PaymentManager {
+  attribute DOMString userHint;
+  Promise<void> enableDelegations(sequence<PaymentDelegation> delegations);
+};
+
+enum PaymentDelegation {
+  "shippingAddress",
+  "payerName",
+  "payerPhone",
+  "payerEmail"
+};
+
+partial interface ServiceWorkerGlobalScope {
+  attribute EventHandler oncanmakepayment;
+};
+
+[Constructor(DOMString type),
+ Exposed=ServiceWorker]
+interface CanMakePaymentEvent : ExtendableEvent {
+  void respondWith(Promise<boolean> canMakePaymentResponse);
+};
+
+partial interface ServiceWorkerGlobalScope {
+  attribute EventHandler onpaymentrequest;
+};
+
+dictionary PaymentRequestDetailsUpdate {
+  DOMString error;
+  PaymentCurrencyAmount total;
+  sequence<PaymentDetailsModifier> modifiers;
+  sequence<PaymentShippingOption> shippingOptions;
+  object paymentMethodErrors;
+  AddressErrors shippingAddressErrors;
+};
+
+[Constructor(DOMString type, optional PaymentRequestEventInit eventInitDict),
+ Exposed=ServiceWorker]
+interface PaymentRequestEvent : ExtendableEvent {
+  readonly attribute USVString topOrigin;
+  readonly attribute USVString paymentRequestOrigin;
+  readonly attribute DOMString paymentRequestId;
+  readonly attribute FrozenArray<PaymentMethodData> methodData;
+  readonly attribute object total;
+  readonly attribute FrozenArray<PaymentDetailsModifier> modifiers;
+  readonly attribute object? paymentOptions;
+  readonly attribute FrozenArray<PaymentShippingOption>? shippingOptions;
+  Promise<WindowClient?> openWindow(USVString url);
+  Promise<PaymentRequestDetailsUpdate?> changePaymentMethod(DOMString methodName, optional object? methodDetails = null);
+  Promise<PaymentRequestDetailsUpdate?> changeShippingAddress(optional AddressInit shippingAddress );
+  Promise<PaymentRequestDetailsUpdate?> changeShippingOption(DOMString shippingOption);
+  void respondWith(Promise<PaymentHandlerResponse> handlerResponsePromise);
+};
+
+dictionary PaymentRequestEventInit : ExtendableEventInit {
+  USVString topOrigin;
+  USVString paymentRequestOrigin;
+  DOMString paymentRequestId;
+  sequence<PaymentMethodData> methodData;
+  PaymentCurrencyAmount total;
+  sequence<PaymentDetailsModifier> modifiers;
+  PaymentOptions paymentOptions;
+  sequence<PaymentShippingOption> shippingOptions;
+};
+
+dictionary PaymentHandlerResponse {
+DOMString methodName;
+object details;
+DOMString? payerName;
+DOMString? payerEmail;
+DOMString? payerPhone;
+AddressInit shippingAddress;
+DOMString? shippingOption;
+};
+
+// AddressInit already defined in payment-request.idl

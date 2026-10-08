@@ -1,9 +1,10 @@
 // GENERATED CONTENT - DO NOT EDIT
-// Content was automatically extracted by Reffy into reffy-reports
-// (https://github.com/tidoust/reffy-reports)
-// Source: Input Device Capabilities (https://wicg.github.io/InputDeviceCapabilities/)
+// Content was automatically extracted by Reffy into webref
+// (https://github.com/w3c/webref)
+// Source: Input Device Capabilities (https://wicg.github.io/input-device-capabilities/)
 
-[Constructor(optional InputDeviceCapabilitiesInit deviceInitDict)]
+[Constructor(optional InputDeviceCapabilitiesInit deviceInitDict),
+ Exposed=Window]
 interface InputDeviceCapabilities {
   readonly attribute boolean firesTouchEvents;
   readonly attribute boolean pointerMovementScrolls;
