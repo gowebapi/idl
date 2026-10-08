@@ -135,7 +135,7 @@ func extractIDLFromDoc(filename string) ([]byte, error) {
 				for {
 					k, v, more := z.TagAttr()
 					if string(k) == "class" {
-						for _, c := range strings.Fields(string(v)) {
+						for c := range strings.FieldsSeq(string(v)) {
 							if c == "idl" {
 								isIDL = true
 							}

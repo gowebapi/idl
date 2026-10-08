@@ -14,7 +14,7 @@ This repository contains WebIDL browser specifications and language transformati
 
 WebIDL specifications are primarily sourced from the W3C curated repository [`w3c/webref`](https://github.com/w3c/webref) or directly from WHATWG Bikeshed (`.bs`) and HTML source repositories.
 
-All raw WebIDL files must pass through the normalization tool [`tools/extractor`](file:///home/janpf/Projects/gowebapi/idl/tools/extractor/main.go) to ensure compatibility with `webidlparser` and `webidl-bind`.
+All raw WebIDL files must pass through the normalization tool [`tools/extractor`](file:///home/janpf/Projects/gowebapi/idl/tools/extractor/main.go) to ensure compatibility with [`webidl-bind`](file:///home/janpf/Projects/gowebapi/webidl-bind/) (which includes the integrated `ast` and `parser` packages).
 
 ### A. Bulk Sync from `w3c/webref` (Recommended)
 
@@ -56,7 +56,7 @@ go run main.go -input-idl /path/to/raw.idl -output ../../idl/<spec-name>.idl
 
 ### D. Normalizations Performed by the Extractor
 
-The extractor tool automatically transforms modern WebIDL constructs into formats supported by `webidlparser` and `webidl-bind`:
+The extractor tool automatically transforms modern WebIDL constructs into formats supported by [`webidl-bind`](file:///home/janpf/Projects/gowebapi/webidl-bind/):
 1. **Constructors**: Converts in-body `constructor(...)` declarations into `[Constructor(...)]` interface annotations.
 2. **Return Types**: Converts `undefined` returns to `void`.
 3. **Exposed Annotations**: Converts `[Exposed=*]` wildcard attributes to `[Exposed=(Window,Worker)]`.
@@ -79,6 +79,7 @@ The extractor tool automatically transforms modern WebIDL constructs into format
 This branch modernizes the IDL extraction pipeline (go1.27), synchronizes upstream specifications to the latest 
 W3C/WHATWG releases, and adds modern Web specifications standardized since 2019.
 
+- Integrated the WebIDL AST and parser packages directly into [`webidl-bind`](file:///home/janpf/Projects/gowebapi/webidl-bind/) (`github.com/gowebapi/webidl-bind/ast` and `github.com/gowebapi/webidl-bind/parser`) replacing the external `github.com/gowebapi/webidlparser` dependency, and modernized them with `modernize -fix`.
 - Removed broken test `Dockerfile`.
 
 #### Specification Renames & Consolidations
